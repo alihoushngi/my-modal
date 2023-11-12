@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { CSSTransition } from "react-transition-group";
 import { IModal } from "./ModalTypes";
 
@@ -18,23 +17,15 @@ import {
 import { ReactComponent } from "@/types/base";
 
 const Modal: ReactComponent<IModal> = (props) => {
-  const { children, isOpen, onClose, closeOnBackDropClick } = props;
-
-  const modalRef = useRef(null);
-
-  useOnClickOutside(modalRef, () => {
-    if (!closeOnBackDropClick) {
-      return;
-    }
-    onClose();
-  });
+  const { children, header, headerChildren, isOpen, onClose } = props;
 
   return (
     <>
       <CSSTransition in={isOpen} timeout={300} classNames="fade" unmountOnExit>
         <StyledModalOverLay>
-          <StyledModal ref={modalRef}>
+          <StyledModal>
             <StyledModalHeader>
+              {header && <div>{headerChildren}</div>}
               <StyledModalHeaderWrapper>
                 <StyledCloseButton className="close-button" onClick={onClose}>
                   &times;

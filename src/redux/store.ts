@@ -1,10 +1,12 @@
 // store.ts
 import { configureStore } from "@reduxjs/toolkit";
-import modalReducer from "./slices/modalSlices";
+import contentModalReducer from "./slices/contentModalSlices";
+import signalModalReducer from "./slices/signalModalSlice";
 
 export const store = configureStore({
   reducer: {
-    modal: modalReducer,
+    contentModal: contentModalReducer,
+    signalModal: signalModalReducer,
   },
 });
 

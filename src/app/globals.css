@@ -5,4 +5,5 @@
 html,
 body {
   background-color: #193f96;
+  box-sizing: border-box;
 }
