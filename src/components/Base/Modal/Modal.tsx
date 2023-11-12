@@ -15,39 +15,30 @@ import {
   StyledModalHeaderWrapper,
   StyledModalOverLay,
 } from "./ModalStyled";
+import { ReactComponent } from "@/types/base";
 
-const Modal = ({
-  children,
-  isOpen,
-  animation,
-  //   onClose,
-  closeOnBackDropClick,
-}: IModal) => {
+const Modal: ReactComponent<IModal> = (props) => {
+  const { children, isOpen, onClose, closeOnBackDropClick } = props;
+
   const modalRef = useRef(null);
-  //   useOnClickOutside(modalRef, () => {
-  //     if (!closeOnBackDropClick) {
-  //       return;
-  //     }
-  //     onClose();
-  //   });
+
+  useOnClickOutside(modalRef, () => {
+    if (!closeOnBackDropClick) {
+      return;
+    }
+    onClose();
+  });
 
   return (
     <>
-      <CSSTransition
-        in={isOpen}
-        timeout={300}
-        classNames={
-          animation === "fade" ? "core-modal-fade" : "core-modal-slide-down"
-        }
-        unmountOnExit
-      >
+      <CSSTransition in={isOpen} timeout={300} classNames="fade" unmountOnExit>
         <StyledModalOverLay>
           <StyledModal ref={modalRef}>
             <StyledModalHeader>
               <StyledModalHeaderWrapper>
-                {/* <StyledCloseButton className="close-button" onClick={onClose}>
+                <StyledCloseButton className="close-button" onClick={onClose}>
                   &times;
-                </StyledCloseButton> */}
+                </StyledCloseButton>
               </StyledModalHeaderWrapper>
             </StyledModalHeader>
             <StyledModalContent>{children}</StyledModalContent>

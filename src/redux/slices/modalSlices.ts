@@ -8,14 +8,14 @@ const modalSlice = createSlice({
   name: "content-modal",
   initialState,
   reducers: {
-    openModal: (state, action) => {
+    openContentModal: (state, action) => {
       state.isOpen = true;
     },
-    closeModal: (state, action) => {
+    closeContentModal: (state, action) => {
       state.isOpen = false;
     },
   },
 });
 
-export const { openModal, closeModal } = modalSlice.actions;
+export const { openContentModal, closeContentModal }: any = modalSlice.actions;
 export default modalSlice.reducer;
