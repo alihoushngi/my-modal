@@ -52,14 +52,14 @@ export default function Home() {
     {
       name: "Tweet",
       ImageButton: twitter2,
-      buttonOnClickFunc: notification,
+      buttonOnClickFunc: openSignalModalHandler,
       customButtonClass: "rounded-s-xl",
       buttonDisableOrNot: false,
     },
     {
       name: "Analysis",
       ImageButton: analytics,
-      buttonOnClickFunc: notification,
+      buttonOnClickFunc: openSignalModalHandler,
       customButtonClass: "",
       buttonDisableOrNot: false,
     },
